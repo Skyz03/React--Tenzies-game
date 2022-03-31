@@ -1,7 +1,11 @@
 import "./App.css";
 
 function App() {
-  return <h1>Hello Word</h1>;
+  return (
+    <main>
+      <h1>Tenzies</h1>
+    </main>
+  );
 }
 
 export default App;

@@ -11,22 +11,18 @@ function App() {
     return newDice;
   };
 
-  console.log(allNewDice());
+  //Initiate the state for the dice.
+  const [dice, setDice] = React.useState(allNewDice());
 
+  const diceElements = dice.map((die) => {
+    return <Die value={die} />;
+  });
   return (
     <main>
-      <div className="die">
-        <Die value={1} />
-        <Die value={2} />
-        <Die value={3} />
-        <Die value={4} />
-        <Die value={5} />
-        <Die value={6} />
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
-      </div>
+      <div className="die">{diceElements}</div>
+      <button className="die__btn" onClick={() => setDice(allNewDice())}>
+        Roll Dice
+      </button>
     </main>
   );
 }

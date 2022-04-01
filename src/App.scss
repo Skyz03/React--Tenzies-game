@@ -26,6 +26,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .die {
@@ -49,5 +50,18 @@ main {
   &__number {
     font-size: 1.3rem;
     font-weight: 700;
+  }
+
+  &__btn {
+    background-color: purple;
+    color: #fff;
+    padding: 0.8em 2em;
+    border-radius: 7px;
+    border: none;
+    margin-top: 2em;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.07em;
   }
 }

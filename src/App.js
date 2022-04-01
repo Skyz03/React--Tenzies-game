@@ -16,11 +16,37 @@ function App() {
     return newDice;
   };
 
+  //create a new function holdDice that passes id of die to be held and console logs it.
+  const holdDice = (id) => {
+    setDice((oldDice) =>
+      oldDice.map((die) => {
+        return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+      })
+    );
+  };
   //Initiate the state for the dice.
-  const [dice, setDice] = React.useState(allNewDice());
 
+  //   setDice((oldDice) => {
+  //     oldDice.map((die) => {
+  //       if (die.id === id) {
+  //         return { ...die, isHeld: !die.isHeld };
+  //       } else {
+  //         return die;
+  //       }
+  //     });
+  //   });
+  // };
+
+  const [dice, setDice] = React.useState(allNewDice());
   const diceElements = dice.map((die) => {
-    return <Die value={die.value} />;
+    return (
+      <Die
+        onClick={() => holdDice(die.id)}
+        isHeld={die.isHeld}
+        key={die.id}
+        value={die.value}
+      />
+    );
   });
   return (
     <main>

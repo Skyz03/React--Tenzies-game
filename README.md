@@ -28,7 +28,8 @@ These are the 4 main feature added to the notes application.
 
 ### Screenshot
 
-![image](https://user-images.githubusercontent.com/42742924/160988809-6d7f6fab-eed5-4394-ab85-a3a466d7dd59.png)
+![image](https://user-images.githubusercontent.com/42742924/161430806-d95dcd1b-94cb-4f54-bf5d-c688394c7b05.png)
+
 
 ### Links
 

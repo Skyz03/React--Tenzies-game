@@ -1,4 +1,4 @@
-# The Notes App Created using React.
+# The Tenzies App Created using React.
 
 ## Table of contents
 
@@ -16,15 +16,15 @@
 
 ## Overview
 
-This is the note application challenge which is not mobile yet compatible with mobile devices but has been integrated with local storage to store the notes for you until the cache has been cleared.
+This is the Tenzies Game application challenge which is not compatible with mobile devices but has used some of the react fundamentals such as props, useState, useEffect and conditional rendering and event listners.
 
 ### The challenge
 
 These are the 4 main feature added to the notes application.
-- Syncing the notes with the local Storage to save data even after refresh.
-- Adding the notes summary titles.
-- Arrange the modified notes to the top of the site.
-- Add the delete icon and delete the notes once its removed.
+- Generating 10 random components of dice.
+- Mapping Array to Die Components.
+- Being able to roll the Dice with the buttons.
+- Holding the dice when clicked and Ending game after all held.
 
 ### Screenshot
 

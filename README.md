@@ -33,8 +33,8 @@ These are the 4 main feature added to the notes application.
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Code](https://github.com/Skyz03/React--Tenzies-game
+- Live Site URL: [Live](https://skyz03.github.io/React--Tenzies-game/)
 
 ## My process
 
@@ -49,53 +49,48 @@ Then add the features slowly as mentioned above to complete the challenge.
 
 ### What I learned
 
-I learned a lot about how to implement this features using react the the power of react state.
+I learned a lot about how to implement the fundamentals of react.
 
-The first step to sync local storage
+Generating a random of 10 dices
 ```
-  const [notes, setNotes] = React.useState(
-    JSON.parse(localStorage.getItem("notesElem")) || []
-  );
-
-  // This is used to set the current note id
-  const [currentNoteId, setCurrentNoteId] = React.useState(
-    (notes[0] && notes[0].id) || ""
-  );
-
-  // This is used to set the current note in local storage.
-  React.useEffect(() => {
-    localStorage.setItem("notesElem", JSON.stringify(notes));
-  }, [notes]);
-```
-
-This snippt used to change the title of the each note
-```
-        {/* This is used to get the snippet of the code from the notes body and set it to the sidebar */}
-        <h4 className="text-snippet">{note.body.split("\n")}</h4>
-```
-
-Return a new array when a note is updated
-```
-  // This is used to set the current note to the top of the list.
-  function updateNote(text) {
-    setNotes((oldNotes) => {
-      const newArray = [];
-      for (let i = 0; i < oldNotes.length; i++) {
-        const oldNote = oldNotes[i];
-        if (oldNote.id === currentNoteId) {
-          newArray.unshift({ ...oldNote, body: text });
-        } else {
-          newArray.push(oldNote);
-        }
-      }
-      return newArray;
-    });
+ function generateNewDie() {
+    return {
+      value: Math.floor(Math.random() * 6) + 1,
+      isHeld: false,
+      id: nanoid(),
+    };
   }
+```
+
+Setting the hold dice which are clicked
+```
+     const holdDice = (id) => {
+    setDice((oldDice) =>
+      oldDice.map((die) => {
+        return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+      })
+    );
+  };
+```
+
+Checking if you won or not using Tenzies state
+```
+  let [tenzies, setTenzies] = React.useState(false);
+
+  //A useeffect which runs everytime when dice array changes. Also checks. if dice are held and all matches the same value.
+  React.useEffect(() => {
+    const allHeld = dice.every((die) => die.isHeld);
+    const firstValue = dice[0].value;
+    const allSameValue = dice.every((die) => die.value === firstValue);
+    if (allHeld && allSameValue) {
+      setTenzies(true);
+    }
+  }, [dice]);
  ```
 
 ### Continued development
 
-Could use styled components and other advance technologies.
+Could use ideas provided in the next video.
 
 ### Useful resources
 

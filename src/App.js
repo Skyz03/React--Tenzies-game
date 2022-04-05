@@ -26,6 +26,8 @@ function App() {
   //Initialization of state to generate new dice array all the time.
   const [dice, setDice] = React.useState(allNewDice());
 
+  const [count, setCount] = React.useState(0);
+
   //A function to held dice by id if they match.
   const holdDice = (id) => {
     setDice((oldDice) =>
@@ -43,10 +45,13 @@ function App() {
           return die.isHeld ? die : generateNewDie();
         })
       );
+
+      setCount((oldCount) => oldCount + 1);
       //Once every thing is held it set the state to false and generate a whole bunch of new dice.
     } else {
       setTenzies(false);
       setDice(allNewDice());
+      setCount(0);
     }
   };
 
@@ -84,7 +89,10 @@ function App() {
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
+        <br />
+        <strong className="count"> Total no of roll: {count}</strong>
       </p>
+
       {/* This shows the dice element in the game  */}
       <div className="die">{diceElements}</div>
       {/* A button which runs the rollDice function when clicked */}

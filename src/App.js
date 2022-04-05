@@ -27,6 +27,9 @@ function App() {
   const [dice, setDice] = React.useState(allNewDice());
 
   const [count, setCount] = React.useState(0);
+  const [oldCount, setOldCount] = React.useState(
+    JSON.parse(localStorage.getItem("count")) || 0
+  );
 
   //A function to held dice by id if they match.
   const holdDice = (id) => {
@@ -52,8 +55,14 @@ function App() {
       setTenzies(false);
       setDice(allNewDice());
       setCount(0);
+      setOldCount(count);
     }
   };
+
+  // A useEffect to set the previous count in the game.
+  React.useEffect(() => {
+    localStorage.setItem("count", JSON.stringify(count));
+  }, [count]);
 
   //A state to determine if the game is won or not.
   let [tenzies, setTenzies] = React.useState(false);
@@ -90,6 +99,7 @@ function App() {
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
         <br />
+        <strong className="count"> Previous Count: {oldCount}</strong> <br />
         <strong className="count"> Total no of roll: {count}</strong>
       </p>
 
